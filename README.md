@@ -81,7 +81,13 @@ $Ip = ''
 
 <br>
 
-#### Sorrowsync - Deploy KeyVault,s Function and Configure
+#### Sorrowsync - Serverless API
+
+<p align="center">
+    <img src="sorrowsync.webp" alt="Serverless C2" height="300"/>
+</p>
+
+##### Deploy KeyVaults Function and Configure
 
 Serverless C2 API/redirector, requires keyVault and managed Identity or access policy. KeyVault URL is stored in an env var. The API uses a scoped token to your github repo allowing read/write on the contents only. Store it in keyvault as ghToken, need the repoName and username and some other settings stored in the vault. The Function will retrieve what it needs to access github and read/write C2 as agents check in and post results. Bocklist is a good idea but not really implemented anymore. More to come on that.
 
@@ -98,6 +104,11 @@ $groupname = ""
 ```
 
 ##### Modules
+
+<p align="center">
+    <img src="graboid.webp" alt="Stealer Module" height="300"/>
+</p>
+
 Included is one module 'Cloudish' which steals cloud credentials, tokens, configs, etc and posts to the C2. Compile it as a dll, then base64 encode and upload the txt file into 'assets'
 
 ```powershell
