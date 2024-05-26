@@ -81,7 +81,11 @@ $Ip = ''
 
 <br>
 
-#### Sorrowsync - Serverless API
+<!-- #### Sorrowsync - Serverless API -->
+
+<p align="center" style="font-size: 48px; font-weight: bold;">
+    Sorrowsync - Serverless C2 API
+</p>
 
 <p align="center">
     <img src="sorrowsync.webp" alt="Serverless C2" height="300"/>
@@ -103,7 +107,11 @@ $groupname = ""
 .\Scripts\Gen-Keyvault.ps1 -Vaultname $vaultName -locationname $location -groupname $groupname 
 ```
 
-##### Modules
+<!-- ##### Modules -->
+
+<p align="center" style="font-size: 48px; font-weight: bold;">
+    Modules
+</p>
 
 <p align="center">
     <img src="graboid.webp" alt="Stealer Module" height="300"/>
