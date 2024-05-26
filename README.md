@@ -46,6 +46,7 @@ $scriptPath = ".\Stager.ps1"
 .\azSadrat.ps1 -url $url -zipName $zipName -exeName $exeName -vmName $vmName -resourceGroup $rg -az -scriptPath $scriptPath
 ```
 
+<br> 
 
 #### Command Documentation
 This document outlines the basic Sadrat commands, as well as the Graboid modules.
