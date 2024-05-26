@@ -2,8 +2,6 @@
     Sadrat
 </p>
 
-<!-- ### Serverless C2 Agent, Datastealer and Remote Access Toolkit -->
-
 <p align="center">
    Serverless C2 Agent, Datastealer and Remote Access Toolkit
 </p>
