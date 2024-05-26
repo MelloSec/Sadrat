@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-   Serverless C2 Agent, DataStealer and Remote Access Toolkit
+   Serverless Agent, DataStealer and Remote Access Toolkit
 </p>
 
 <p align="center">
