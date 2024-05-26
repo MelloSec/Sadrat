@@ -110,9 +110,19 @@ $location = ""
 $groupname = ""
 
 # will prompt for values of the secrets needed for redirector
-.\Scripts\Gen-Keyvault.ps1 -Vaultname $vaultName -locationname $location -groupname $groupname 
+.\Scripts\Gen-KeyVault.ps1 -Vaultname $vaultName -locationname $location -groupname $groupname 
 ```
 
+##### Deploy the Function App
+```powershell
+$baseName = "serverlessc2"
+$path = ".\Sorrowsync\ServerlessC2"
+$location = "East US"
+
+.\Scripts\Deploy-FunctionApp.ps1 -baseName $basename -localFolderPath $path -location $location
+```
+
+<br>
 <!-- ##### Modules -->
 
 <p align="center" style="font-size: 48px; font-weight: bold;">
