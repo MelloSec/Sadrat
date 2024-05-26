@@ -98,7 +98,7 @@ powershell -ep bypass .\azSadrat.ps1 -winrm -url $url -zipName $zipName -exeName
     <img src="sorrowsync.webp" alt="Serverless C2" height="300"/>
 </p>
 
-##### Deploy API, Keyvault and Configure
+##### Deploy API, Keyvault and Configure Networking
 
 Serverless C2 API/redirector is an Azure Function app in C#, requires keyVault and managed Identity or access policy for storing tokens and config values. KeyVault URL is stored in an env var. The API uses a scoped token to your github repo allowing read/write on the contents only. Store it in keyvault as ghToken, need the repoName and username and some other settings stored in the vault. The Function will retrieve what it needs to access github and read/write C2 as agents check in and post results. Bocklist is a good idea but not really implemented anymore. More to come on that.
 
