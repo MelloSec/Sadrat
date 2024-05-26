@@ -2,9 +2,9 @@
 
 ### Serverless C2 Agent, Datastealer and Remote Access Toolkit
 
-<div style="text-align: center;">
-    <img src="sadrat.webp" alt="Sadrat Hacker" width="300" height="300"/>
-</div>
+<p align="center">
+    <img src="sadrat.webp" alt="Sadrat Hacker" height="300"/>
+</p>
 
 #### Stagers
 Zip up the .exe.config, dll and sideloading exe and base64.exe -n 0 -i then upload it into the module repo. Provide the url, stagers will decode and drop, extract, execute. 
