@@ -3,7 +3,7 @@
 ### Serverless C2 Agent, Datastealer and Remote Access Toolkit
 
 <div style="text-align: center;">
-    <img src="images/sadrat.webp" alt="Sadrat Hacker" width="300" height="300"/>
+    <img src="sadrat.webp" alt="Sadrat Hacker" width="300" height="300"/>
 </div>
 
 #### Stagers
