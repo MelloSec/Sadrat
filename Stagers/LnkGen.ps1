@@ -6,7 +6,6 @@ param (
     [string]$iconPath
 )
 
-# The full script content as a single command
 $scriptContent = @"
 $response = Invoke-WebRequest -Uri '$url' -UseBasicParsing; 
 $base64Content = \$response.Content; 
