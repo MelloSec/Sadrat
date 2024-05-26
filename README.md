@@ -43,7 +43,13 @@ $vmname = ""
 $rg = ""
 $scriptPath = ".\Stager.ps1"
 
+# az
 .\azSadrat.ps1 -az -url $url -zipName $zipName -exeName $exeName -vmName $vmName -resourceGroup $rg -scriptPath $scriptPath
+
+# winRm
+$Ip = ''
+.\azSadrat.ps1 -winrm -url $url -zipName $zipName -exeName $exeName -vmName $Ip -scriptPath $scriptPath
+
 ```
 
 <br> 
