@@ -1,4 +1,4 @@
-<p align="center" style="font-size: 24px; font-weight: bold;">
+<p align="center" style="font-size: 34px; font-weight: bold;">
     Sadrat
 </p>
 
