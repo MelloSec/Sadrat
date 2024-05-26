@@ -110,7 +110,7 @@ $groupname = ""
 <!-- ##### Modules -->
 
 <p align="center" style="font-size: 48px; font-weight: bold;">
-    Modules
+    Graboid Modules
 </p>
 
 <p align="center">
