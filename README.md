@@ -1,6 +1,10 @@
 ## Sadrat
 
-### Serverless C2 Agent, Datastealer and Remote Access Toolkit
+<!-- ### Serverless C2 Agent, Datastealer and Remote Access Toolkit -->
+
+<p align="center">
+   Serverless C2 Agent, Datastealer and Remote Access Toolkit
+</p>
 
 <p align="center">
     <img src="sadrat.webp" alt="Sadrat Hacker" height="300"/>
