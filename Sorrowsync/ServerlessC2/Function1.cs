@@ -17,6 +17,7 @@ using System.IO.Compression;
 using System.Collections.Generic;
 using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
+using System.Xml.Linq;
 
 
 
@@ -36,6 +37,43 @@ public static class FileOperationFunctionV2
     static FileOperationFunctionV2()
     {
         InitializeHttpClient();
+    }
+
+    [FunctionName("CheckAssets")]
+    public static async Task<IActionResult> Run23(
+[HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "assets/{fileName}")] HttpRequest req,
+string fileName,
+ILogger log, ExecutionContext context)
+    {
+        //ghUsername", "repoName", "ghToken
+      /*  await InitializeConfig(context);*/
+
+        // Use the initialized static variables
+        string repoUrl = $"https://api.github.com/repos/{ghUsername}/{repoName}/contents/assets/{fileName}.txt";
+
+        using (var newClient = new HttpClient())
+        {
+            newClient.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("AppName", "1.0"));
+            newClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", ghToken);
+
+            HttpResponseMessage response = await newClient.GetAsync(repoUrl);
+            if (response.IsSuccessStatusCode)
+            {
+                string jsonResponse = await response.Content.ReadAsStringAsync();
+                var contentObject = JsonConvert.DeserializeObject<dynamic>(jsonResponse);
+                string encodedContent = contentObject.content;
+                byte[] data = Convert.FromBase64String(encodedContent);
+                string decodedContent = Encoding.UTF8.GetString(data);
+
+                log.LogInformation($"File content: {decodedContent}");
+                return new OkObjectResult(decodedContent);
+            }
+            else
+            {
+                log.LogError($"Failed to retrieve file: {response.StatusCode}");
+                return new StatusCodeResult((int)response.StatusCode);
+            }
+        }
     }
 
     private static void InitializeHttpClient()
