@@ -87,6 +87,9 @@ $Ip = ''
 #### Command Documentation
 This document outlines the basic Sadrat commands, as well as the Graboid modules.
 
+##### Actions
+Limited post-checkin scripting available in the Actions folder.
+
 ##### `shell <command>`
 - **Description:** Executes a system shell command on the host machine.
 - **Usage:** `shell <command>`

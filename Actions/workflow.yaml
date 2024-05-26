@@ -1,38 +1,50 @@
-# name: Agent Check-In Workflow
+name: Agent Check-In Workflow
 
-# on:
-#   push:
-#     branches:
-#       - main
+on:
+  push:
+    branches:
+      - main
 
-# jobs:
-#   checkin:
-#     runs-on: ubuntu-latest
+jobs:
+  checkin:
+    runs-on: ubuntu-latest
 
-#     steps:
-#       - name: Checkout repository
-#         uses: actions/checkout@v2
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-#       - name: Set up Python
-#         uses: actions/setup-python@v2
-#         with:
-#           python-version: '3.x'
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
 
-#       - name: Install dependencies
-#         run: |
-#           python -m pip install --upgrade pip
-#           pip install pyyaml
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml
+          pip install watchdog
 
-#       - name: Identify new agents and process check-ins
-#         run: |
-#           python process_checkins.py
+      - name: Identify new agents and process check-ins
+        run: |
+          python process_checkins.py
 
-#       - name: Commit and push changes
-#         run: |
-#           git config --global user.name 'github-actions[bot]'
-#           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-#           git add .
-#           git commit -m 'Update check-in files for agents'
-#           git push
-#         env:
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Check for changes
+        id: git_changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add .
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            echo "::set-output name=changes_detected::false"
+          else
+            echo "::set-output name=changes_detected::true"
+          fi
+
+      - name: Commit and push changes
+        if: steps.git_changes.outputs.changes_detected == 'true'
+        run: |
+          git commit -m 'Update check-in files for agents'
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
