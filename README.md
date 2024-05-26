@@ -1,7 +1,8 @@
 ## Sadrat
 
-![Sadrat Hacker](sadrat.webp)
+<!-- ![Sadrat Hacker](sadrat.webp) -->
 
+<img src="sadrat.webp" alt="Sadrat Hacker" width="300" height="300"/>
 
 ### Serverless C2 Agent, Datastealer and Remote Access Toolkit
 
