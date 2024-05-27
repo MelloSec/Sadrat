@@ -131,8 +131,6 @@ $location = "East US"
 
 <br>
 
-<!-- ##### Modules -->
-
 <p align="center" style="font-size: 48px; font-weight: bold;">
     Graboid Modules
 </p>
