@@ -1,7 +1,0 @@
-C:\Users\RleeA\OneDrive\vsWorkspace\Code\GitHubProjects\2023\Mellosec\Sadrat\Sadrat\bin\Debug\Sadrat.exe.config
-C:\Users\RleeA\OneDrive\vsWorkspace\Code\GitHubProjects\2023\Mellosec\Sadrat\Sadrat\bin\Debug\Sadrat.exe
-C:\Users\RleeA\OneDrive\vsWorkspace\Code\GitHubProjects\2023\Mellosec\Sadrat\Sadrat\bin\Debug\Sadrat.pdb
-C:\Users\RleeA\OneDrive\vsWorkspace\Code\GitHubProjects\2023\Mellosec\Sadrat\Sadrat\obj\Debug\Sadrat.csproj.AssemblyReference.cache
-C:\Users\RleeA\OneDrive\vsWorkspace\Code\GitHubProjects\2023\Mellosec\Sadrat\Sadrat\obj\Debug\Sadrat.csproj.CoreCompileInputs.cache
-C:\Users\RleeA\OneDrive\vsWorkspace\Code\GitHubProjects\2023\Mellosec\Sadrat\Sadrat\obj\Debug\Sadrat.exe
-C:\Users\RleeA\OneDrive\vsWorkspace\Code\GitHubProjects\2023\Mellosec\Sadrat\Sadrat\obj\Debug\Sadrat.pdb
