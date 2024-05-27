@@ -234,7 +234,7 @@ This document outlines the basic Sadrat commands, as well as the Graboid modules
 </p>
 
 <p align="center">
-    <img src="hood.webp" alt="Sadrat Hacker" height="300"/>
+    <img src="hood2.webp" alt="Coming Soon" height="300"/>
 </p>
 
 
