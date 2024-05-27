@@ -227,6 +227,15 @@ This document outlines the basic Sadrat commands, as well as the Graboid modules
 - **Details:** Attempts to move the file or directory located at `<source>` to `<destination>`. Logs an error if the operation fails.
 - **Example:** `mv /path/source.txt /path/destination.txt`
 
+<p align="center">
+   In Development
+</p>
+
+<p align="center">
+    <img src="hood.webp" alt="Sadrat Hacker" height="300"/>
+</p>
+
+
 ##### `remote`
 - **Description:** Retrieves detailed information about active network connections, logged-on users, shared resources, and RDP sessions on the local system. This command is designed to provide a comprehensive overview of the network and user activities to help in security monitoring and auditing.
 - **Usage:** `remote`
@@ -365,7 +374,7 @@ This document outlines the basic Sadrat commands, as well as the Graboid modules
 - **Details:** Leverages the `Win32_Service` WMI class to query detailed information about each service. It is specifically designed for local host analysis and aids in security audits by focusing on services that do not use default system accounts. Non-system accounts are targeted because services running under these accounts can be manipulated for privilege escalation if they have higher privileges or insecure configurations. Administrative privileges are required to access detailed service data.
 - **Output:** The command outputs detailed listings of services not running under system accounts, including the service's name, display name, start name, and description. This information is crucial for identifying potential vulnerabilities that could be exploited for privilege escalation.
 
-## In Development
+<!-- ## In Development -->
 
 ##### `rdpatch` **TODO: REVISIT, may need to capture output correctly**
 - **Description:** Patches the `termsvc.dll` to allow multiple RDP sessions, similar in functionality to tools like SharpDoor.
