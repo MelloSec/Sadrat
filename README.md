@@ -97,7 +97,7 @@ powershell -ep bypass .\azSadrat.ps1 -winrm -url $url -zipName $zipName -exeName
 <!-- #### Sorrowsync - Serverless API -->
 
 <p align="center" style="font-size: 48px; font-weight: bold;">
-    Sorrowsync - Serverless C2 API
+    Sorrowsync - Serverless API
 </p>
 
 <p align="center">
