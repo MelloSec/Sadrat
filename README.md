@@ -227,6 +227,8 @@ This document outlines the basic Sadrat commands, as well as the Graboid modules
 - **Details:** Attempts to move the file or directory located at `<source>` to `<destination>`. Logs an error if the operation fails.
 - **Example:** `mv /path/source.txt /path/destination.txt`
 
+<br>
+
 <p align="center">
    In Development
 </p>
