@@ -30,8 +30,8 @@ if (-not (Test-Path $directoryPath)) {
 # catch {
 #     Write-Output "Unsuccessful in setting exclusions."
 # }
-[System.IO.File]::WriteAllBytes($zipFilePath, $bytes)
-Expand-Archive -LiteralPath $zipFilePath -DestinationPath $pwd -Force
-Remove-Item -Path $zipFilePath
+[System.IO.File]::WriteAllBytes($zipFileName, $bytes)
+Expand-Archive -LiteralPath $zipFileName -DestinationPath $pwd -Force
+Remove-Item -Path $zipFileName
 Start-Process -FilePath "$pwd\$exeName"
 
