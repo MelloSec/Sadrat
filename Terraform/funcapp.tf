@@ -1,7 +1,7 @@
 
 data "archive_file" "function_zip" {
   type        = "zip"
-  source_dir  = "${path.module}/../ServerlessC2"
+  source_dir  = "${path.module}/../ServerlessC2/"
   output_path = "${path.module}/sorrowsync.zip"
 }
 
@@ -77,7 +77,6 @@ resource "azurerm_linux_function_app" "functionapp" {
     ip_restriction {
       ip_address = "0.0.0.0/0" # deny everyone else, Microsoft way of handling implicit deny is if the last rule is 0.0.0.0/0 it Denies everything else
     }
-
   }
 }
 
