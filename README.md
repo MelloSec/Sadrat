@@ -13,7 +13,7 @@
 #### Stagers
 Zip up the .exe.config, dll and sideloading exe and base64.exe -n 0 -i then upload it into the module repo. Provide the url, stagers will decode and drop, extract, execute. noParam for executing over sessions and with Intune, Systemsadrat is good for vm run-command against VMs and Servers, especially those without EDR, will attempt to add a defender exclusion and disable monitoring. Simple stager drops to current folder, 'stager' has conditionals folders (if admin) and commented out exlude/disable defender (if admin). lnkgen for shortcut files. 
 
-***TODO: Stealthy Stager with lnkgen persistence built in.
+***TODO: Better Stager with lnkgen persistence built in.
 
 ##### noparamStager.ps1 - Set the params as vars in the script to make remote execution simple
 ```powershell

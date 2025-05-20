@@ -13,7 +13,9 @@ crash.log
 
 # Terraform plan files
 *.tfplan
+*tfplan
+tfplan
 
 # .terraform dir (plugins, providers, modules, etc.)
-.terraform/
+Terraform/.terraform/
 
