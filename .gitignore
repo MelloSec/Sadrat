@@ -1,1 +1,19 @@
 Ignore/
+
+# Terraform state
+*.tfstate
+*.tfstate.backup
+
+# Crash logs
+crash.log
+
+# Sensitive variable overrides
+*.tfvars
+*.tfvars.json
+
+# Terraform plan files
+*.tfplan
+
+# .terraform dir (plugins, providers, modules, etc.)
+.terraform/
+
