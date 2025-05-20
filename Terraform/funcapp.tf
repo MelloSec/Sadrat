@@ -1,9 +1,10 @@
 
 data "archive_file" "function_zip" {
   type        = "zip"
-  source_dir  = "${path.module}/../resources" # your function code folder
-  output_path = "${path.module}/function.zip"
+  source_dir  = "${path.module}/../ServerlessC2"
+  output_path = "${path.module}/sorrowsync.zip"
 }
+
 
 resource "azurerm_storage_account" "func" {
   name                     = var.storage_account_name
